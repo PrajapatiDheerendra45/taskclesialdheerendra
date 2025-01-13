@@ -1,13 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Home from './components/Home'
 
 function App() {
   return (
-    <div >
-      Hello
-      hiii
-    </div>
-  );
+    <>
+    <Home/>
+    </>
+  )
 }
 
-export default App;
+export default App
