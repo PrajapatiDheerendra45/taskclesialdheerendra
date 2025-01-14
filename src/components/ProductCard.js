@@ -8,7 +8,7 @@ import { AiFillAlipaySquare } from "react-icons/ai";
 const ProductCard = ({ product, isCenterCard }) => {
   return (
     <div
-      className={`relative rounded-2xl group w-[300px] ${
+      className={`relative hover:border-4 hover:border-black rounded-2xl group w-[300px] ${
         isCenterCard ? "h-[540px ]" : "h-[460px] mt-3 mb-3"
       } bg-[#fdf6f0] rounded-lg shadow-lg overflow-hidden`}
     >
