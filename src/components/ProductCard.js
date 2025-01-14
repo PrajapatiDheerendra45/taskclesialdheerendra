@@ -1,147 +1,119 @@
-// Import necessary modules
 import React from "react";
-import hoopearning from "../assets/images/hoopearning.jpeg"
-import stackablechain from "../assets/images/stackablechains.jpeg"
-import wingcubanchain from "../assets/images/wingcubanchain.jpeg"
+import hoopearning from "../assets/images/hoopearning.jpeg";
+import stackablechain from "../assets/images/stackablechains.jpeg";
+import wingcubanchain from "../assets/images/wingcubanchain.jpeg";
+import { RiShoppingBagLine } from "react-icons/ri";
+import { AiFillAlipaySquare } from "react-icons/ai";
 
-const ProductCard = () => {
+const ProductCard = ({ product, isCenterCard }) => {
   return (
-    <div className="bg-[#fdf7f2] py-8 px-4">
-      {/* Desktop View */}
-      <div className="hidden md:flex justify-center gap-8">
-        {/* First Card */}
-        <div className="relative bg-white rounded-lg p-4 shadow-md">
-          <img
-            src={hoopearning}
-            alt="Hoop earrings"
-            className="rounded-lg object-cover h-48 w-full"
-          />
-          <div className="absolute top-2 right-2 flex flex-col gap-2">
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-heart text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-eye text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-shopping-bag text-gray-500"></i>
-            </button>
-          </div>
-          <div className="text-center mt-4">
-            <h3 className="text-lg font-medium">Hoop earrings</h3>
-            <p className="text-gray-500">Rs. 2000</p>
-            <div className="mt-2 flex items-center justify-center">
-              <span className="text-yellow-500 text-sm">★★★★☆</span>
-              <span className="text-sm ml-2">1 review</span>
-            </div>
-            <button className="mt-4 w-full bg-[#ffd700] text-black py-2 px-4 rounded-lg font-medium">
-              Add to bag
-            </button>
-          </div>
+    <div
+      className={`relative hover:border-4 hover:border-black rounded-2xl group w-[300px] ${
+        isCenterCard ? "h-[540px ]" : "h-[460px] mt-3 mb-3"
+      } bg-[#fdf6f0] rounded-lg shadow-lg overflow-hidden`}
+    >
+      {/* Image Section */}
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+        🤍
+      </button>
+
+      {/* Content Section */}
+      <div className="absolute bottom-0 left-0 w-full rounded-2xl bg-gradient-to-t from-blue-300/70 to-blue-300/70 text-white p-4 backdrop-blur-md">
+        <h3 className="text-lg font-semibold capitalize">{product.name}</h3>
+        <div className="flex items-center mt-2">
+          <span className="text-yellow-400">⭐</span>
+          <span className="ml-1 text-sm">
+            {product.rating} ({product.reviews} reviews)
+          </span>
         </div>
-        {/* third Card */}
-        <div className="relative bg-white rounded-lg p-4 shadow-md">
-          <img
-            src={wingcubanchain}
-            alt="Stackable Chains"
-            className="rounded-lg object-cover h-48 w-full"
-          />
-          <div className="absolute top-2 right-2 flex flex-col gap-2">
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-heart text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-eye text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-shopping-bag text-gray-500"></i>
-            </button>
+        <p className="mt-2 font-bold">Rs. {product.price}</p>
+
+        {/* Stock Progress */}
+        <div className="mt-2">
+          <div className="text-sm flex justify-between">
+            <span>Sold: {product.sold}</span>
+            <span>Available: {product.available}</span>
           </div>
-          <div className="text-center mt-4">
-            <h3 className="text-lg font-medium">Stackable Chains</h3>
-            <p className="text-gray-500">Rs. 5500</p>
-            <div className="mt-2 flex items-center justify-center">
-              <span className="text-yellow-500 text-sm">★★★★★</span>
-              <span className="text-sm ml-2">3 reviews</span>
-            </div>
-            <button className="mt-4 w-full bg-[#ffd700] text-black py-2 px-4 rounded-lg font-medium">
-              Add to bag
-            </button>
-          </div>
-        </div>
-        <div className="relative bg-white rounded-lg p-4 shadow-md">
-          <img
-            src={stackablechain}
-            alt="Stackable Chains"
-            className="rounded-lg object-cover h-48 w-full"
-          />
-          <div className="absolute top-2 right-2 flex flex-col gap-2">
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-heart text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-eye text-gray-500"></i>
-            </button>
-            <button className="bg-[#ffffff] p-2 rounded-full shadow-md">
-              <i className="fas fa-shopping-bag text-gray-500"></i>
-            </button>
-          </div>
-          <div className="text-center mt-4">
-            <h3 className="text-lg font-medium">Stackable Chains</h3>
-            <p className="text-gray-500">Rs. 5500</p>
-            <div className="mt-2 flex items-center justify-center">
-              <span className="text-yellow-500 text-sm">★★★★★</span>
-              <span className="text-sm ml-2">3 reviews</span>
-            </div>
-            <button className="mt-4 w-full bg-[#ffd700] text-black py-2 px-4 rounded-lg font-medium">
-              Add to bag
-            </button>
+          <div className="w-full bg-gray-300 h-2 rounded-full mt-1">
+            <div
+              className="h-2 rounded-full bg-green-500"
+              style={{
+                width: `${
+                  (product.sold / (product.sold + product.available)) * 100
+                }%`,
+              }}
+            ></div>
           </div>
         </div>
       </div>
 
-      {/* Mobile View */}
-      <div className="flex flex-col md:hidden gap-4">
-        {/* Single Card */}
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <img
-            src="/path-to-image"
-            alt="Hoop earrings"
-            className="rounded-lg object-cover h-48 w-full"
-          />
-          <div className="mt-4 text-center">
-            <h3 className="text-lg font-medium">Hoop earrings</h3>
-            <p className="text-gray-500">Rs. 2000</p>
-            <div className="mt-2 flex items-center justify-center">
-              <span className="text-yellow-500 text-sm">★★★★☆</span>
-              <span className="text-sm ml-2">1 review</span>
-            </div>
-            <button className="mt-4 w-full bg-[#ffd700] text-black py-2 px-4 rounded-lg font-medium">
-              Add to bag
-            </button>
-          </div>
-        </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <img
-            src="/path-to-image"
-            alt="Wing Cuban Chain"
-            className="rounded-lg object-cover h-48 w-full"
-          />
-          <div className="mt-4 text-center">
-            <h3 className="text-lg font-medium">Wing Cuban Chain</h3>
-            <p className="text-gray-500">Rs. 9500</p>
-            <div className="mt-2 flex items-center justify-center">
-              <span className="text-yellow-500 text-sm">★★★★★</span>
-              <span className="text-sm ml-2">2 reviews</span>
-            </div>
-            <button className="mt-4 w-full bg-[#ffd700] text-black py-2 px-4 rounded-lg font-medium">
-              Add to bag
-            </button>
-          </div>
-        </div>
+      {/* Action Buttons */}
+      <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+          🤍
+        </button>
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+          <AiFillAlipaySquare />
+        </button>
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+          👁
+        </button>
+
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200">
+          <RiShoppingBagLine />
+        </button>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+const ProductList = () => {
+  const products = [
+    {
+      name: "Hoop earrings",
+      image: hoopearning,
+      rating: 4.5,
+      reviews: 1,
+      price: 2000,
+      sold: 5,
+      available: 10,
+    },
+    {
+      name: "Stackable chains",
+      image: stackablechain,
+      rating: 5,
+      reviews: 3,
+      price: 5500,
+      sold: 3,
+      available: 1,
+    },
+    {
+      name: "Wing Cuban chain",
+      image: wingcubanchain,
+      rating: 4.8,
+      reviews: 2,
+      price: 9500,
+      sold: 2,
+      available: 5,
+    },
+  ];
+
+  return (
+    <div className="flex flex-wrap gap-8 justify-center py-8 bg-[#fef6ec]">
+      {products.map((product, index) => (
+        <ProductCard
+          key={index}
+          product={product}
+          isCenterCard={index === 1} // Highlight the center card
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ProductList;

@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { LiaShoppingBagSolid } from "react-icons/lia";
+import { CiHeart } from "react-icons/ci";
+import { TbTruckDelivery } from "react-icons/tb";
+import { TbTag, TbCalculator } from "react-icons/tb"; // Import the icons    
+
+
+
+
+
 
 const ProductPage = () => {
+    // State to manage the selected image
+    const [selectedImage, setSelectedImage] = useState(
+        "https://www.thewalletstore.in/cdn/shop/products/Untitled-2_31f2153f-1395-4285-bafc-4b6df6f28f7f.jpg?v=1668753740&width=2048" // Default image
+    );
+
+    // List of thumbnail images
+    const thumbnails = [
+        "https://www.thewalletstore.in/cdn/shop/products/Untitled-2_31f2153f-1395-4285-bafc-4b6df6f28f7f.jpg?v=1668753740&width=2048",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoUpXXffKupCIF9J9y52eWEKlqW11bSpQgoA&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAd8352p0g_RgZPRPlJME560q3vLgNukensQ&s",
+    ];
+
+
+
     return (
         <div className="container mx-auto p-4">
             {/* Main Content Grid */}
@@ -10,7 +34,7 @@ const ProductPage = () => {
                     {/* Main Product Image */}
                     <div className="mb-4">
                         <img
-                            src="https://via.placeholder.com/500x500.png?text=Main+Image" // Replace with your main product image
+                            src={selectedImage} // Display the selected image
                             alt="Main Product"
                             className="w-full h-auto rounded-lg"
                         />
@@ -18,17 +42,14 @@ const ProductPage = () => {
 
                     {/* Thumbnail Images */}
                     <div className="flex space-x-4">
-                        {[
-                            "https://via.placeholder.com/100x100.png?text=Thumbnail+1",
-                            "https://via.placeholder.com/100x100.png?text=Thumbnail+2",
-                            "https://via.placeholder.com/100x100.png?text=Thumbnail+3",
-                            "https://via.placeholder.com/100x100.png?text=Thumbnail+4",
-                        ].map((src, idx) => (
+                        {thumbnails.map((src, idx) => (
                             <img
                                 key={idx}
                                 src={src}
                                 alt={`Thumbnail ${idx + 1}`}
-                                className="w-16 h-16 rounded-lg border border-gray-300 cursor-pointer hover:border-gray-500"
+                                className={`w-16 h-16 rounded-lg border cursor-pointer ${selectedImage === src ? "border-gray-500" : "border-gray-300"
+                                    }`}
+                                onClick={() => setSelectedImage(src)} // Set the clicked image as selected
                             />
                         ))}
                     </div>
@@ -56,7 +77,6 @@ const ProductPage = () => {
 
                     {/* Rating Section */}
                     <div className="flex items-center space-x-2">
-                        {/* Stars */}
                         {[1, 2, 3, 4, 5].map((_, idx) => (
                             <svg
                                 key={idx}
@@ -72,25 +92,57 @@ const ProductPage = () => {
                     </div>
 
                     {/* Quantity Selector */}
-                    <div className="flex items-center space-x-2">
-                        <button className="w-10 h-10 bg-gray-200 rounded hover:bg-gray-300">-</button>
+                    <div className="flex items-center space-x-4 mt-4">
+                        {/* Quantity Buttons */}
+                        <button className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold">
+                            -
+                        </button>
                         <input
                             type="number"
                             value="1"
                             readOnly
                             className="w-12 text-center border rounded"
                         />
-                        <button className="w-10 h-10 bg-gray-200 rounded hover:bg-gray-300">+</button>
+                        <button className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold">
+                            +
+                        </button>
+
+                        {/* Buy Now Button */}
+                        <button className="flex-grow py-2 px-4 border border-black text-black font-semibold rounded-full hover:bg-gray-100">
+                            Buy Now
+                        </button>
+
+                        {/* Icons Section */}
+                        <div className="flex items-center space-x-4 text-gray-600">
+                            {/* Shopping Bag Icon */}
+                            <button className="flex flex-col items-center text-gray-600 text-2xl hover:text-black">
+                                <LiaShoppingBagSolid />
+                            </button>
+
+                            {/* Heart Icon */}
+                            <button className="flex flex-col text-2xl items-center text-gray-600 hover:text-black">
+                                <CiHeart />
+                            </button>
+
+                            {/* Scale Icon */}
+                            <button className="flex flex-col items-center text-gray-600 hover:text-black">
+                                <i className="fas fa-balance-scale text-xl"></i>
+                            </button>
+                        </div>
                     </div>
 
+
+
+
+
+
+
                     {/* Buy Now Button */}
-                    <button className="w-full py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800">
-                        Buy Now
-                    </button>
+
 
                     {/* Product Description */}
                     <div>
-                        <h2 className="text-lg font-bold mb-2">Description</h2>
+                        <h2 className="text-lg font-bold mb-2 text-white bg-black inline-block px-2">BEST</h2>
                         <p className="text-sm text-gray-600">
                             Safer For The Environment: Our denim factory partner recycles 98% of their water
                             using reverse osmosis filtration and keeps byproducts out of the environment by
@@ -100,7 +152,6 @@ const ProductPage = () => {
 
                     {/* Additional Info */}
                     <div>
-                        <h2 className="text-lg font-bold mb-2">Details</h2>
                         <ul className="text-sm text-gray-600 space-y-1">
                             <li>
                                 <strong>SKU:</strong> N/A
@@ -118,9 +169,29 @@ const ProductPage = () => {
                     </div>
 
                     {/* Delivery Info */}
-                    <div>
-                        <h2 className="text-lg font-bold mb-2">Delivery & Return</h2>
-                        <p className="text-sm text-gray-600">Estimated delivery: Feb 09 - Feb 13</p>
+                    <div className="space-y-2">
+                        {/* Flexbox to align the icon and text in the same line */}
+                        <div className="flex items-center space-x-2">
+                            {/* Truck Delivery Icon */}
+                            <TbTruckDelivery className="text-2xl" />
+                            <p className="text-md mb-2">Delivery & Return</p>
+                        </div>
+
+                        {/* Flexbox for SIZE GUIDE */}
+                        <div className="flex items-center space-x-2">
+                            {/* Size Icon */}
+                            <TbTag className="text-2xl" />
+                            <p className="text-md mb-2">SIZE GUIDE</p>
+                        </div>
+
+                        {/* Flexbox for Estimated Delivery */}
+                        <div className="flex items-center space-x-2">
+                            {/* Arrow Icon */}
+                            <TbCalculator className="text-2xl" />
+
+
+                            <p className="text-md mb-2">ESTIMATED DELIVERY: FEB 9 - FEB 13</p>
+                        </div>
                     </div>
                 </div>
             </div>
