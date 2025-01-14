@@ -5,11 +5,6 @@ import { CiHeart } from "react-icons/ci";
 import { TbTruckDelivery } from "react-icons/tb";
 import { TbTag, TbCalculator } from "react-icons/tb"; // Import the icons    
 
-
-
-
-
-
 const ProductPage = () => {
     // State to manage the selected image
     const [selectedImage, setSelectedImage] = useState(
@@ -19,11 +14,27 @@ const ProductPage = () => {
     // List of thumbnail images
     const thumbnails = [
         "https://www.thewalletstore.in/cdn/shop/products/Untitled-2_31f2153f-1395-4285-bafc-4b6df6f28f7f.jpg?v=1668753740&width=2048",
+        "https://blingvine.com/cdn/shop/products/enchanted-crystal-bracelet-bracelets-blingvine-690743_750x.jpg?v=1636529925",
+        "https://zevrr.com/cdn/shop/products/ZB11.webp?v=1669113135",
+        "https://silverlinings.in/cdn/shop/products/SilverBraceletforwomenBG131_1.jpg?v=1601211711",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoUpXXffKupCIF9J9y52eWEKlqW11bSpQgoA&s",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAd8352p0g_RgZPRPlJME560q3vLgNukensQ&s",
     ];
 
+    // State to manage the quantity
+    const [quantity, setQuantity] = useState(1);
 
+    // Function to handle increase in quantity
+    const increaseQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
+    };
+
+    // Function to handle decrease in quantity
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(prevQuantity => prevQuantity - 1);
+        }
+    };
 
     return (
         <div className="container mx-auto p-4">
@@ -31,12 +42,12 @@ const ProductPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left: Image Section */}
                 <div>
-                    {/* Main Product Image */}
-                    <div className="mb-4">
+                    {/* Main Product Image with zoom effect */}
+                    <div className="mb-4 relative overflow-hidden">
                         <img
                             src={selectedImage} // Display the selected image
                             alt="Main Product"
-                            className="w-full h-auto rounded-lg"
+                            className="w-full h-auto rounded-lg transform transition duration-300 hover:scale-110" // Apply zoom effect on hover
                         />
                     </div>
 
@@ -94,16 +105,22 @@ const ProductPage = () => {
                     {/* Quantity Selector */}
                     <div className="flex items-center space-x-4 mt-4">
                         {/* Quantity Buttons */}
-                        <button className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold">
+                        <button
+                            className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold"
+                            onClick={decreaseQuantity} // Decrease the quantity
+                        >
                             -
                         </button>
                         <input
                             type="number"
-                            value="1"
+                            value={quantity} // Display the current quantity
                             readOnly
                             className="w-12 text-center border rounded"
                         />
-                        <button className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold">
+                        <button
+                            className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold"
+                            onClick={increaseQuantity} // Increase the quantity
+                        >
                             +
                         </button>
 
@@ -130,15 +147,6 @@ const ProductPage = () => {
                             </button>
                         </div>
                     </div>
-
-
-
-
-
-
-
-                    {/* Buy Now Button */}
-
 
                     {/* Product Description */}
                     <div>
@@ -188,8 +196,6 @@ const ProductPage = () => {
                         <div className="flex items-center space-x-2">
                             {/* Arrow Icon */}
                             <TbCalculator className="text-2xl" />
-
-
                             <p className="text-md mb-2">ESTIMATED DELIVERY: FEB 9 - FEB 13</p>
                         </div>
                     </div>
