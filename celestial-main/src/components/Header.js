@@ -33,9 +33,9 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <div className="flex items-center w-full">
           {/* Center Logo */}
-          <div className="flex gap-8">
+          <div className="flex md:gap-8">
             <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
-              <CiHeart className="w-6 h-6 text-bold" />
+              <CiHeart className="w-6 h-6 text-bold md:block hidden" />
             </button>
             <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
               <RiShoppingBagLine className="w-6 h-6" />
@@ -46,7 +46,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Logo"
-              className="md:max-w-[200px] md:w-[300px] md:h-[80px] h-[50px]"
+              className="md:max-w-[200px] md:w-[300px] md:h-[80px] h-[40px]"
             />
           </div>
 
