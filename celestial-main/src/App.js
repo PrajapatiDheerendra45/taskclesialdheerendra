@@ -5,6 +5,7 @@ import CheckOutPage from './components/CheckOutPage'
 import ContactForm from './components/ContactForm'
 import ProductCategories from './components/ProductCategories'
 import HeroSection from './components/HeroSection'
+import Shop from "./components/Shop.js"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <ProductCard />
       <ContactForm />
       <CheckOutPage />
+      <Shop/>
 
     </>
   )
