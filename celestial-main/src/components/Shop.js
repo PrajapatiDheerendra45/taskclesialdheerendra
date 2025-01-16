@@ -179,7 +179,6 @@ const App = () => (
                     <button className="bg-[#223D38] text-orange-200 py-1 px-16 rounded-full text-sm hover:bg-orange-200 hover:text-white transition duration-500">
                         GIFTS
                     </button>
-
                 </div>
 
                 <div className="flex justify-between items-center mb-10  ">
@@ -187,7 +186,6 @@ const App = () => (
                     <div className="flex items-center gap-2">
                         <button className="text-sm text-[#223D38]">
                             <span className="text-[#223D38] font-semibold text-sm flex items-center">
-                                {/* Inline SVG filter icon */}
                                 <svg
                                     className="svgFilter goldsmith-svg-icon h-5 w-5 mr-2 text-orange-200"
                                     height="32"
