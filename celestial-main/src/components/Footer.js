@@ -74,7 +74,7 @@ const Footer = () => {
 
             {/* Footer Bottom Section */}
             <div className="mt-10 pt-6 text-center text-[#f0d5a0]">
-                <div className="flex justify-center space-x-4 mb-4 py-4 border-t border-b border-orange-100">
+                <div className="flex justify-center space-x-4 mb-4 py-4   border-t border-b border-orange-100 border-[0.5px] ">
                     <span className="font-bold relative bottom-1 uppercase">Follow Us</span>
                     <a href="#" className="hover:text-white"><FaInstagram/></a>
                     <a href="#" className="hover:text-white"><FaLinkedinIn/></a>
