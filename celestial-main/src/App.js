@@ -30,6 +30,11 @@ function App()
       <ContactForm />
       <CheckOutPage />
    
+      <Shop/>
+
+       {/* <ProductCard /> */}
+      {/*<ContactForm />
+      <CheckOutPage />
       <CheckOutPage /> */}
          {/* <Shop/> */}
          <Review/>
