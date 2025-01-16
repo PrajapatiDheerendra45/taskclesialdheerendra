@@ -67,11 +67,11 @@ const App = () => {
                             </span>
                         </div>
 
-                        <div className="flex gap-2 mb-4 justify-between">
+                        <div className="flex gap-2 mb-2 justify-between">
                             <p className="text-sm text-gray-500 mb-4">Ordered: 0</p>
 
                             <span className="text-gray-600 text-sm">Items available: 1</span></div>
-
+                        <div className=" px-1 py-1 bg-white rounded-full"></div>
                         {/* Button Section */}
                         <div className="mt-6 flex flex-col space-y-4">
                             <div className="flex space-x-4">
