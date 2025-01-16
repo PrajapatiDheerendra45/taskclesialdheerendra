@@ -1,202 +1,189 @@
 import React, { useState } from "react";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { LiaShoppingBagSolid } from "react-icons/lia";
-import { CiHeart } from "react-icons/ci";
-import { TbTruckDelivery } from "react-icons/tb";
-import { TbTag, TbCalculator } from "react-icons/tb"; // Import the icons    
+import { FaFacebook, FaTwitter, FaPinterest, FaWhatsapp } from 'react-icons/fa';  // Font Awesome Icons
 
-const ProductPage = () => {
-    // State to manage the selected image
+
+
+
+const App = () => {
     const [selectedImage, setSelectedImage] = useState(
-        "https://www.thewalletstore.in/cdn/shop/products/Untitled-2_31f2153f-1395-4285-bafc-4b6df6f28f7f.jpg?v=1668753740&width=2048" // Default image
-    );
+        "https://zoci.in/wp-content/uploads/2024/08/P02546-1-scaled-980x980.webp"
+    ); // Default selected image
 
-    // List of thumbnail images
+    // Array of thumbnail images
     const thumbnails = [
-        "https://www.thewalletstore.in/cdn/shop/products/Untitled-2_31f2153f-1395-4285-bafc-4b6df6f28f7f.jpg?v=1668753740&width=2048",
-        "https://blingvine.com/cdn/shop/products/enchanted-crystal-bracelet-bracelets-blingvine-690743_750x.jpg?v=1636529925",
-        "https://zevrr.com/cdn/shop/products/ZB11.webp?v=1669113135",
-        "https://silverlinings.in/cdn/shop/products/SilverBraceletforwomenBG131_1.jpg?v=1601211711",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoUpXXffKupCIF9J9y52eWEKlqW11bSpQgoA&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAd8352p0g_RgZPRPlJME560q3vLgNukensQ&s",
+        "https://zoci.in/wp-content/uploads/2024/08/P02546-1-scaled-980x980.webp",
+
+        "https://zoci.in/wp-content/uploads/2024/10/mPR3rPVB_out0008-980x980.jpg",
+        "https://zoci.in/wp-content/uploads/2024/08/1724670473526-cdd60a9dd099b4880a5a-01918e5eb0db76648dcd2ef71a02f86foriginalmedium-980x980.png",
     ];
 
-    // State to manage the quantity
-    const [quantity, setQuantity] = useState(1);
-
-    // Function to handle increase in quantity
-    const increaseQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
-    };
-
-    // Function to handle decrease in quantity
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(prevQuantity => prevQuantity - 1);
-        }
-    };
-
     return (
-        <div className="container mx-auto p-4">
-            {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Left: Image Section */}
-                <div>
-                    {/* Main Product Image with zoom effect */}
-                    <div className="mb-4 relative overflow-hidden">
-                        <img
-                            src={selectedImage} // Display the selected image
-                            alt="Main Product"
-                            className="w-full h-auto rounded-lg transform transition duration-300 hover:scale-110" // Apply zoom effect on hover
-                        />
-                    </div>
-
-                    {/* Thumbnail Images */}
-                    <div className="flex space-x-4">
-                        {thumbnails.map((src, idx) => (
+        <div className="bg-[#f5ebe4] min-h-screen py-10">
+            <div className="container mx-auto">
+                <div className="flex flex-col md:flex-row gap-10">
+                    {/* Left Side: Image Gallery */}
+                    <div className="flex flex-col items-center space-y-4 w-24">
+                        {/* Thumbnails */}
+                        {thumbnails.map((thumbnail, index) => (
                             <img
-                                key={idx}
-                                src={src}
-                                alt={`Thumbnail ${idx + 1}`}
-                                className={`md:w-16 md:h-16 w-10 h-10 rounded-lg border cursor-pointer ${selectedImage === src ? "border-gray-500" : "border-gray-300"
-                                    }`}
-                                onClick={() => setSelectedImage(src)} // Set the clicked image as selected
+                                key={index}
+                                src={thumbnail}
+                                alt={`Thumbnail ${index + 1}`}
+                                className="w-20 h-20 rounded-lg object-cover cursor-pointer hover:opacity-75"
+                                onClick={() => setSelectedImage(thumbnail)} // Change image on click
                             />
                         ))}
                     </div>
-                </div>
 
-                {/* Right: Product Details */}
-                <div className="space-y-4">
-                    {/* Product Title */}
-                    <h1 className="text-3xl font-bold">Faceted Crystal Bracelet</h1>
-
-                    {/* Size */}
-                    <p className="text-lg text-gray-500">
-                        Size: <span className="font-semibold">17</span>
-                    </p>
-
-                    {/* Price Section */}
-                    <div className="flex items-center space-x-4">
-                        <span className="text-2xl font-bold text-black">₹21.00</span>
-                        <span className="text-xl text-gray-400 line-through">₹24.00</span>
-                    </div>
-
-                    {/* Stock Information */}
-                    <p className="text-gray-500">36 in stock</p>
-                    <p className="text-gray-500">Ordered: 13</p>
-
-                    {/* Rating Section */}
-                    <div className="flex items-center space-x-2">
-                        {[1, 2, 3, 4, 5].map((_, idx) => (
-                            <svg
-                                key={idx}
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-yellow-500"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                            >
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.959a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.959c.3.921-.755 1.688-1.538 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.783.57-1.838-.197-1.538-1.118l1.286-3.959a1 1 0 00-.364-1.118L2.342 9.386c-.783-.57-.381-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.959z" />
-                            </svg>
-                        ))}
-                        <span className="text-gray-600">(2 Reviews)</span>
-                    </div>
-
-                    {/* Quantity Selector */}
-                    <div className="flex items-center space-x-4 mt-4">
-                        {/* Quantity Buttons */}
-                        <button
-                            className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold"
-                            onClick={decreaseQuantity} // Decrease the quantity
-                        >
-                            -
-                        </button>
-                        <input
-                            type="number"
-                            value={quantity} // Display the current quantity
-                            readOnly
-                            className="w-12 text-center border rounded"
-                        />
-                        <button
-                            className="w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 flex items-center justify-center text-lg font-bold"
-                            onClick={increaseQuantity} // Increase the quantity
-                        >
-                            +
-                        </button>
-
-                        {/* Buy Now Button */}
-                        <button className="flex-grow py-2 px-4 border border-black text-black font-semibold rounded-full hover:bg-gray-100">
-                            Buy Now
-                        </button>
-
-                        {/* Icons Section */}
-                        <div className="flex items-center space-x-4 text-gray-600">
-                            {/* Shopping Bag Icon */}
-                            <button className="flex flex-col items-center text-gray-600 text-2xl hover:text-black">
-                                <LiaShoppingBagSolid />
-                            </button>
-
-                            {/* Heart Icon */}
-                            <button className="flex flex-col text-2xl items-center text-gray-600 hover:text-black">
-                                <CiHeart />
-                            </button>
-
-                            {/* Scale Icon */}
-                            <button className="flex flex-col items-center text-gray-600 hover:text-black">
-                                <i className="fas fa-balance-scale text-xl"></i>
-                            </button>
+                    {/* Right Side: Main Image */}
+                    <div className="flex-1">
+                        <div className="relative">
+                            {/* Main Image */}
+                            <div className="w-full h-full">
+                                <img
+                                    src={selectedImage}
+                                    alt="Main Product"
+                                    className="w-[480px] h-[450px] object-cover rounded-lg"
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    {/* Product Description */}
-                    <div>
-                        <h2 className="text-lg font-bold mb-2 text-white bg-black inline-block px-2">BEST</h2>
-                        <p className="text-sm text-gray-600">
-                            Safer For The Environment: Our denim factory partner recycles 98% of their water
-                            using reverse osmosis filtration and keeps byproducts out of the environment by
-                            mixing them with concrete to create building materials.
+                    {/* Right Side: Product Details */}
+                    <div className="flex-1">
+                        {/* Breadcrumb */}
+                        <p className="text-xs mb-2">
+                            HOME <span className="mx-2"> </span> PENDENTS <span className="mx-2"> </span> Evil Eye Necklace
                         </p>
-                    </div>
 
-                    {/* Additional Info */}
-                    <div>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                            <li>
-                                <strong>SKU:</strong> N/A
-                            </li>
-                            <li>
-                                <strong>Categories:</strong> Gold Piercing, Nose Rings, Silver Rings
-                            </li>
-                            <li>
-                                <strong>Tags:</strong> Bestseller, Trend
-                            </li>
-                            <li>
-                                <strong>Brands:</strong> GoldenBrothers, GoldStone
-                            </li>
-                        </ul>
-                    </div>
 
-                    {/* Delivery Info */}
-                    <div className="space-y-2">
-                        {/* Flexbox to align the icon and text in the same line */}
-                        <div className="flex items-center space-x-2">
-                            {/* Truck Delivery Icon */}
-                            <TbTruckDelivery className="text-2xl" />
-                            <p className="text-md mb-2">Delivery & Return</p>
+
+                        {/* Title and Price */}
+                        <h1 className="text-3xl font-semibold mb-2">Evil Eye Necklace</h1>
+                        <div className="flex gap-2 mb-4 justify-between">
+                            <p className="text-xl font-semibold text-gray-800 mb-2">₹4,000.00</p>
+                            <span className="bg-white px-3 py-2 rounded-full text-center block " style={{ fontSize: '0.625rem' }}>
+                                1 IN STOCK
+                            </span>
                         </div>
 
-                        {/* Flexbox for SIZE GUIDE */}
-                        <div className="flex items-center space-x-2">
-                            {/* Size Icon */}
-                            <TbTag className="text-2xl" />
-                            <p className="text-md mb-2">SIZE GUIDE</p>
+                        <div className="flex gap-2 mb-4 justify-between">
+                            <p className="text-sm text-gray-500 mb-4">Ordered: 0</p>
+
+                            <span className="text-gray-600 text-sm">Items available: 1</span></div>
+
+                        {/* Button Section */}
+                        <div className="mt-6 flex flex-col space-y-4">
+                            <div className="flex space-x-4">
+                                <button className="bg-white text-black py-1 px-20 border border-black rounded-full">
+                                    Buy Now
+                                </button>
+                                <button className="">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="30"
+                                        height="30"
+                                        className="text-black"
+                                    >
+                                        <path
+                                            fill="#F5EBE4" // Orange inside the heart
+                                            stroke="black" // Black outline of the heart
+                                            strokeWidth="2"
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        />
+                                    </svg>
+                                </button>
+
+                                <button className="">
+                                    <svg
+                                        className="w-6 h-6 text-black"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <button className="border border-black bg-white py-1 px-10 rounded-full">
+                                Keep in Bag
+                            </button>
                         </div>
 
-                        {/* Flexbox for Estimated Delivery */}
-                        <div className="flex items-center space-x-2">
-                            {/* Arrow Icon */}
-                            <TbCalculator className="text-2xl" />
-                            <p className="text-md mb-2">ESTIMATED DELIVERY: FEB 9 - FEB 13</p>
+
+                        {/* Stock Info */}
+                        <p className="mt-6 text-black text-sm bg-[#FFFCF2]  px-2 py-2 rounded-full" >
+                            6 people have this in their carts right now. It's running out!
+                        </p>
+
+                        {/* Additional Information */}
+                        <div className="mt-8">
+                            <select
+                                name="metalColor"
+                                id="metalColor"
+                                className="mt-2 p-2 border rounded-full w-full sm:w-80 md:w-96 lg:w-full transition-all duration-300 ease-in-out"
+                                style={{ transitionDuration: '0.5s' }}
+                            >
+                                <option value="">Additional Information</option>
+                                <option value="baseMetalType">
+                                    Base Metal Type - Silver 925
+                                </option>
+                                <option value="metalColor">
+                                    Metal Color - Yellow
+                                </option>
+                            </select>
+
+                            <select
+                                name="story"
+                                id="story"
+                                className="mt-4 p-2 border rounded-full w-full sm:w-80 md:w-96 lg:w-full transition-all duration-300 ease-in-out"
+                                style={{
+                                    transitionDuration: '0.5s',
+                                    whiteSpace: 'normal',
+                                    wordWrap: 'break-word',
+                                    maxWidth: '100%',  // Ensure it doesn't overflow
+                                    wordBreak: 'break-word', // Break words at the right spot if needed
+                                }}
+                            >
+                                <option value="">Story</option>
+                                <option value="storyDesc">
+                                    Discover the embodiment of affection with this En vogue
+                                    Heart Pendant. Crafted in luminous gold, it gently cradles a radiant opal
+                                    heart, symbolizing love that’s as pure and enduring as its design.
+                                    Perfect for adding a touch of romance to any ensemble.
+                                </option>
+                            </select>
+                        </div>
+
+
+
+
+                        {/* Share Buttons */}
+                        <div className="mt-6 flex space-x-2">
+                            <p>share :</p>
+                            <button className="text-blue-600 hover:text-blue-800">
+                                <FaFacebook size={24} />
+                            </button>
+                            <button className="text-blue-400 hover:text-blue-600">
+                                <FaTwitter size={24} />
+                            </button>
+                            <button className="text-red-500 hover:text-red-700">
+                                <FaPinterest size={24} />
+                            </button>
+                            <button className="text-green-500 hover:text-green-700">
+                                <FaWhatsapp size={24} />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -205,4 +192,4 @@ const ProductPage = () => {
     );
 };
 
-export default ProductPage;
+export default App;
