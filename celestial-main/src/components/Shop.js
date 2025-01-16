@@ -135,14 +135,14 @@ const ProductCard = ({ product }) => (
 
 const App = () => (
   <div className="bg-[rgb(239 231 223)]  ">
-    <div className="flex flex-col items-start mb-6 px-6">
+    <div className="flex flex-col items-start mb-10 px-6 mt-10 ml-5" >
       <h1 className="text-sm font-semibold flex items-center">
         Home <span className="inline-block mx-2 text-gray-200">•</span> shop
       </h1>
       <h1 className="text-xl font-semibold flex items-center">
         <span className="inline-block mx-2 ">shop</span>
       </h1>
-    
+    </div>
     <div className="bg-[#EFE7DF] min-h-screen p-8">
       <div className="mb-6">
         <span className="text-[#223D38]  text-sm">Fast Filters:</span>
@@ -215,7 +215,6 @@ const App = () => (
     </div>
     </div>
    
-  </div>
   </div>
 );
 
