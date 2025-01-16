@@ -2,6 +2,7 @@ import React from "react";
 import { FaEye, FaRegHeart } from "react-icons/fa";
 import { HiRefresh } from "react-icons/hi";
 import { RiShoppingBagLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -202,11 +203,13 @@ const App = () => (
           </div>
         </div>
       </div>
+      <Link to="/CheckOutPage">
       <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-16 ">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </div>
+      </div></Link>
+     
       <div className="bg-[#EFE7DF] flex justify-center  mt-5 mb-5">
       <button className="bg-[#214344] p-1 px-7 rounded rounded-full text-white">Load More</button>
     </div>

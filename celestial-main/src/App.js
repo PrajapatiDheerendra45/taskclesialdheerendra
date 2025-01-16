@@ -8,6 +8,7 @@ import Shop from "./components/Shop.js";
 import { FaAngleUp } from "react-icons/fa";
 import Landing from "./components/Landing.js";
 import Header from "./components/Header.js";
+import CheckOutPage from "./components/CheckOutPage.js";
 
 function App() {
   const scrollToTop = () => {
@@ -22,9 +23,12 @@ function App() {
       <div>
         {/* Define Routes */}
         <Header/>
+        
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/CheckOutPage" element={ <CheckOutPage/>} />
+         
         </Routes>
 
         {/* Footer Component */}
