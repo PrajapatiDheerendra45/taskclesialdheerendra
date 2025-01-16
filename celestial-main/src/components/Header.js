@@ -227,6 +227,12 @@ const Header = () => {
                     Contact
                   </a>
                 </li>
+
+                <div className="text-gray-500 absolute bottom-16">
+                Earrings
+Copyright © 2024, <span className="text-black text-bold">Zoci</span> Website.<br/>
+Made with passion by <span className="text-black text-bold">TapForTech</span>.
+                </div>
               </ul>
             </div>
           </div>
