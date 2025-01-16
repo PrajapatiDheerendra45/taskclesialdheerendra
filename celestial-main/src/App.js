@@ -5,6 +5,7 @@ import CheckOutPage from './components/CheckOutPage'
 import ContactForm from './components/ContactForm'
 import ProductCategories from './components/ProductCategories'
 import HeroSection from './components/HeroSection'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
       <Home />
       <HeroSection />
       <ProductCategories />
-      {/* <ProductCard />
-      <ContactForm />
+      <ProductCard />
+      {/* <ContactForm />
       <CheckOutPage /> */}
-
+      <Footer/>
     </>
   )
 }
