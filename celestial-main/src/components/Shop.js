@@ -142,7 +142,7 @@ const App = () => (
       <h1 className="text-xl font-semibold flex items-center">
         <span className="inline-block mx-2 ">shop</span>
       </h1>
-    </div>
+    
     <div className="bg-[#EFE7DF] min-h-screen p-8">
       <div className="mb-6">
         <span className="text-[#223D38]  text-sm">Fast Filters:</span>
@@ -215,6 +215,7 @@ const App = () => (
     </div>
     </div>
    
+  </div>
   </div>
 );
 
