@@ -35,7 +35,6 @@ function App()
 
        {/* <ProductCard /> */}
       {/*<ContactForm />
-      <CheckOutPage />
 
 
       {/* <ProductCard /> */}
@@ -43,6 +42,8 @@ function App()
       <CheckOutPage /> */}
          {/* <Shop/> */}
          <Review/>
+         <CheckOutPage />
+
       <Footer/>
       <div className="fixed bottom-5 right-5 z-50">
       <button
