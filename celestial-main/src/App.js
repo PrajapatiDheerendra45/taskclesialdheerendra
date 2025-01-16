@@ -13,10 +13,11 @@ function App() {
       <Home />
       <HeroSection />
       <ProductCategories />
-      {/* <ProductCard />
-      <ContactForm />
-      <CheckOutPage />
       <Shop/>
+
+       {/* <ProductCard /> */}
+      {/*<ContactForm />
+      <CheckOutPage />
       <CheckOutPage /> */}
 
     </>
