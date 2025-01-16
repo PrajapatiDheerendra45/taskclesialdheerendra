@@ -13,6 +13,7 @@ import { HiOutlineBars4 } from "react-icons/hi2";
 import { FaSearch } from "react-icons/fa";
 import { LuRefreshCcw } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,17 +38,24 @@ const Header = () => {
             <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
               <CiHeart className="w-6 h-6 text-bold md:block hidden" />
             </button>
-            <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
-              <RiShoppingBagLine className="w-6 h-6" />
-            </button>
+            <div className="relative">
+              <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
+                <RiShoppingBagLine className="w-6 h-6" />
+              </button>
+              <span className="absolute -top-1 -left-3 bg-[#F0D5A0] text-black text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                1
+              </span>
+            </div>
           </div>
 
           <div className="flex-grow flex justify-center">
-            <img
-              src={logo}
-              alt="Logo"
-              className="md:max-w-[200px] md:w-[300px] md:h-[80px] h-[40px]"
-            />
+            <Link to="/">
+              <img
+                src={logo}
+                alt="Logo"
+                className="md:max-w-[200px] md:w-[300px] md:h-[80px] h-[40px]"
+              />
+            </Link>
           </div>
 
           {/* Right Icons */}
@@ -216,12 +224,14 @@ const Header = () => {
                     About Us
                   </a>
                 </li>
-                <li className="flex justify-between items-center">
+              <Link to="shop">
+              <li className="flex justify-between items-center">
                   <a href="/shop" className="block hover:text-gray-700">
                     Shop
                   </a>
                   <MdKeyboardArrowRight className="text-black" />
                 </li>
+              </Link>
                 <li>
                   <a href="/contact" className="block hover:text-gray-700">
                     Contact
@@ -229,9 +239,11 @@ const Header = () => {
                 </li>
 
                 <div className="text-gray-500 absolute bottom-16">
-                Earrings
-Copyright © 2024, <span className="text-black text-bold">Zoci</span> Website.<br/>
-Made with passion by <span className="text-black text-bold">TapForTech</span>.
+                  Earrings Copyright © 2024,{" "}
+                  <span className="text-black text-bold">Zoci</span> Website.
+                  <br />
+                  Made with passion by{" "}
+                  <span className="text-black text-bold">TapForTech</span>.
                 </div>
               </ul>
             </div>
