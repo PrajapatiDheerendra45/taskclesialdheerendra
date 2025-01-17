@@ -1,120 +1,111 @@
 import React, { useState } from "react";
-import { FaFacebook, FaTwitter, FaPinterest, FaWhatsapp } from "react-icons/fa"; // Font Awesome Icons
+import {
+  FaFacebook,
+  FaTwitter,
+  FaPinterest,
+  FaWhatsapp,
+  FaRegHeart,
+  FaEye,
+} from "react-icons/fa"; // Font Awesome Icons
+import { LuRefreshCcw } from "react-icons/lu";
+import { IoIosArrowBack } from "react-icons/io";
 import { RiArrowDownSLine, RiShoppingBagLine } from "react-icons/ri";
 const products = [
-    {
-        id: 1,
-        name: "Rose-Clover Pendant",
-        price: "₹2,600.00",
-        sold: 0,
-        available: 1,
-        image: "https://zoci.in/wp-content/uploads/2024/08/P02047-scaled-980x980.webp", // Replace with actual image path
-    },
-    {
-        id: 2,
-        name: "A starry affair",
-        price: "₹2,700.00",
-        sold: 0,
-        available: 1,
-        image: "https://zoci.in/wp-content/uploads/2024/08/B03070-scaled-980x980.webp", // Replace with actual image path
-    },
-    {
-        id: 3,
-        name: "Rose quartz cocktail ring",
-        price: "₹3,800.00",
-        sold: 0,
-        available: 1,
-        image: "https://zoci.in/wp-content/uploads/2024/08/R02416-scaled-980x980.webp", // Replace with actual image path
-    },
-    {
-        id: 4,
-        name: "Rose-Clover Pendant",
-        price: "₹2,600.00",
-        sold: 0,
-        available: 5,
-        image: "https://zoci.in/wp-content/uploads/2024/08/P02047-scaled-980x980.webp", // Replace with actual image path
-    },
-   
+  {
+    id: 1,
+    name: "Rose-Clover Pendant",
+    price: "₹2,600.00",
+    sold: 0,
+    available: 1,
+    image:
+      "https://zoci.in/wp-content/uploads/2024/08/P02047-scaled-980x980.webp", // Replace with actual image path
+  },
+  {
+    id: 2,
+    name: "A starry affair",
+    price: "₹2,700.00",
+    sold: 0,
+    available: 1,
+    image:
+      "https://zoci.in/wp-content/uploads/2024/08/B03070-scaled-980x980.webp", // Replace with actual image path
+  },
+  {
+    id: 3,
+    name: "Rose quartz cocktail ring",
+    price: "₹3,800.00",
+    sold: 0,
+    available: 1,
+    image:
+      "https://zoci.in/wp-content/uploads/2024/08/R02416-scaled-980x980.webp", // Replace with actual image path
+  },
+  {
+    id: 4,
+    name: "Rose-Clover Pendant",
+    price: "₹2,600.00",
+    sold: 0,
+    available: 5,
+    image:
+      "https://zoci.in/wp-content/uploads/2024/08/P02047-scaled-980x980.webp", // Replace with actual image path
+  },
 ];
 
 const ProductCard = ({ product }) => (
-    <div className="bg-[#214344] text-white shadow-md rounded-xl overflow-hidden border-4 border-[#223D38] relative group">
-        <div className="relative">
-            {/* Image with zoom-in effect on hover */}
-            <img
-                src={product.image}
-                alt={product.name}
-                className="h-[380px] w-full object-cover group-hover:scale-110 transition-transform duration-300"
-            />
+  <div className="bg-[#214344] text-white shadow-md rounded-xl overflow-hidden border-4 border-[#223D38] relative group">
+    <div className="relative">
+      {/* Image with zoom-in effect on hover */}
+      <img
+        src={product.image}
+        alt={product.name}
+        className="h-[380px] w-full object-cover group-hover:scale-110 transition-transform duration-300"
+      />
 
-            {/*Heart Icon - Always Visible */}
-            <button className="absolute top-3 right-3 bg-[#214344] p-1 rounded-full">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="white"
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                >
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-            </button>
+      {/*Heart Icon - Always Visible */}
+      <button className="absolute top-3 right-3 text-[#f0d5a0] p-1 rounded-full">
+        <FaRegHeart className="w-5 h-5 ml-3" />
+      </button>
 
-            {/* Other Icons - Visible on Hover */}
-            <div className="absolute top-12 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col">
-                {/* Eye Icon */}
+      {/* Other Icons - Visible on Hover */}
+      <div className="absolute top-12 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col">
+        {/* Eye Icon */}
 
-                {/* Reload Icon */}
-                <button className="bg-[#214344] p-1 rounded-full mb-2">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
-                    </svg>
-                </button>
-                <button className="bg-[#214344] p-1 rounded-full mb-2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="white"
-                        strokeWidth="2"
-                        width="20"
-                        height="20"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5c4.97 0 9 4.5 9 4.5s-4.03 4.5-9 4.5-9-4.5-9-4.5 4.03-4.5 9-4.5z"
-                        />
-                        <circle cx="12" cy="9" r="2.5" />
-                    </svg>
-                </button>
-            </div>
+        {/* Reload Icon */}
+        <button className="text-[#f0d5a0] hover:text-gray-300">
+          <LuRefreshCcw className="w-5 h-5" />
+        </button>
+        <button className="text-[#f0d5a0] hover:text-gray-300">
+          <FaEye className="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+    <div className="relative bg-[#214344] p-4 rounded-b-xl overflow-visible transition-all duration-300 group-hover:-translate-y-2">
+      {/* Keep in Bag Button - Half Inside & Half Outside */}
+      <button className="w-full bg-[#FFFFFF] text-[#223D38] py-1 rounded-full absolute bottom-[-33px] left-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        Keep in Bag
+      </button>
+      {/* Content */}
+      <div className="transition-all duration-300">
+        <h3 className="text-sm font-semibold mb-2">{product.name}</h3>
+        <p className="text-sm mt-1 text-orange-200 mb-3">{product.price}</p>
+        <div className="my-2">
+          <div className="w-full bg-white h-1.5 mb-1 rounded mt-1">
+            <div
+              className="bg-green-400 h-1 rounded"
+              style={{ width: `${(product.sold / product.available) * 100}%` }}
+            ></div>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-orange-200">
+              Sold: <span className="text-white">{product.sold}</span>
+            </span>
+            <span className="text-orange-200">
+              Available: <span className="text-white">{product.available}</span>
+            </span>
+          </div>
         </div>
-        <div className="">
-            <h3 className="text-sm font-semibold mb-2">{product.name}</h3>
-            <p className="text-sm mt-1 text-orange-200 mb-3">{product.price}</p>
-            <div className="my-2">
-                <div className="w-full bg-white h-1.5 mb-1 rounded mt-1">
-                    <div
-                        className="bg-green-400 h-1 rounded"
-                        style={{ width:` ${(product.sold / product.available) * 100}%` }}
-                    ></div>
-                </div>
-                <div className="flex justify-between text-sm">
-                    <span className="text-orange-200">
-                        Sold: <span className="text-white">{product.sold}</span>
-                    </span>
-                    <span className="text-orange-200">
-                        Available: <span className="text-white">{product.available}</span>
-                    </span>
-                </div>
-            </div>
-            {/* Keep in Bag Button - Visible on Hover with Slide-up Effect */}
-            <button className="w-full bg-[#FFFFFF] text-[#223D38] py-1 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-10">
-                Keep in Bag
-            </button>
-        </div>
-    </div>
+      </div>
+    </div>
+        
+  </div>
 );
 
 const CheckOutPage = () => {
@@ -143,7 +134,7 @@ const CheckOutPage = () => {
     setIsOpen(false); // Close the dropdown when an option is selected
   };
   return (
-    <div className="bg-[#f5ebe4] min-h-screen py-10">
+    <div className="bg-[#f5ebe4] min-h-screen py-5">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row gap-10">
           {/* Left Side: Image Gallery */}
@@ -298,18 +289,22 @@ const CheckOutPage = () => {
 
                 {/* Dropdown Content */}
                 {isOpen && (
-                  <div className="absolute left-0 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg">
-                    {options.map((option) => (
+                  <div className="absolute left-0 bottom-full mb-2 md:top-full md:mt-2 w-full border border-gray-300 rounded rounded-3xl shadow-lg bg-white md:bg-white relative">
+                  {/* Mobile View Arrow */}
+                  
+              
+                  {options.map((option) => (
                       <div
-                        key={option.value}
-                        onClick={() => handleSelect(option.value)}
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                        style={{ whiteSpace: "pre-wrap" }}
+                          key={option.value}
+                          onClick={() => handleSelect(option.value)}
+                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 rounded rounded-3xl"
+                          style={{ whiteSpace: "pre-wrap" }}
                       >
-                        {option.label}
+                          {option.label}
                       </div>
-                    ))}
-                  </div>
+                  ))}
+              </div>
+              
                 )}
               </div>
             </div>
@@ -334,15 +329,48 @@ const CheckOutPage = () => {
         </div>
 
         <div className="font-bold">
-          <h2>Viewers Also Liked</h2>
+          <h2 className="text-bold text-2xl md:ml-10">Viewers Also Liked</h2>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 px-10 mt-8">
+      <div className="px-10 mt-8">
+    <div className="flex sm:grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 overflow-x-auto sm:overflow-visible">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+            <div key={product.id} className="flex-shrink-0 w-full sm:w-auto">
+                <ProductCard product={product} />
+            </div>
         ))}
-                  
+    </div>
+</div>
+
+      <div className="bg-[rgb(245 235 228)] p-6 md:p-12 rounded-lg max-w-4xl mx-auto mt-10">
+        <h2 className="text-xl font-bold text-black mb-4">Reviews</h2>
+
+        {/* No Reviews Button */}
+        <div className="bg-gray-500 text-white px-4 py-2 rounded-md inline-block text-sm">
+          There are no reviews yet
+        </div>
+
+        {/* Add a Review Section */}
+        <div className="mt-4 flex items-center gap-2 text-gray-600 text-sm cursor-pointer">
+          <span className="text-lg">
+            <IoIosArrowBack />
+          </span>{" "}
+          {/* Left Arrow Icon */}
+          <span>Add a review</span>
+        </div>
+
+        {/* Login Required Message */}
+        <div className="mt-6 text-gray-500 text-sm text-center">
+          You must be logged in to post a review
+        </div>
+
+        {/* Login Button */}
+        <div className="flex justify-center mt-4">
+          <button className="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800 transition">
+            Log In
+          </button>
+        </div>
       </div>
     </div>
   );

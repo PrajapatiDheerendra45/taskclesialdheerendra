@@ -113,9 +113,14 @@ const Header = () => {
 
               {/* Main Icons (Vertically Aligned) */}
               <div className="flex flex-col items-center space-y-6">
-                <button className="text-[#f0d5a0] hover:text-gray-300">
-                  <RiShoppingBagLine className="w-5 h-5" />
-                </button>
+                <div className="relative">
+                  <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
+                    <RiShoppingBagLine className="w-6 h-6" />
+                  </button>
+                  <span className="absolute -top-1 -left-3 bg-[#F0D5A0] text-black text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                    1
+                  </span>
+                </div>
                 <button className="text-[#f0d5a0] hover:text-gray-300">
                   <FaRegHeart className="w-5 h-5" />
                 </button>
@@ -174,9 +179,14 @@ const Header = () => {
                   <IoCloseSharp className="w-6 h-6" />
                 </button>
                 <div className="flex flex-row items-center space-x-6 md:hidden">
-                  <button className="text-[#f0d5a0] hover:text-gray-300">
-                    <RiShoppingBagLine className="w-5 h-5" />
-                  </button>
+                  <div className="relative">
+                    <button className="text-[#F0D5A0] w-6 h-6 hover:text-gray-300">
+                      <RiShoppingBagLine className="w-6 h-6" />
+                    </button>
+                    <span className="absolute -top-1 -left-3 bg-[#F0D5A0] text-black text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                      1
+                    </span>
+                  </div>
                   <button className="text-[#f0d5a0] hover:text-gray-300">
                     <FaRegHeart className="w-5 h-5" />
                   </button>
@@ -224,14 +234,14 @@ const Header = () => {
                     About Us
                   </a>
                 </li>
-              <Link to="shop">
-              <li className="flex justify-between items-center">
-                  <a href="/shop" className="block hover:text-gray-700">
-                    Shop
-                  </a>
-                  <MdKeyboardArrowRight className="text-black" />
-                </li>
-              </Link>
+                <Link to="shop">
+                  <li className="flex justify-between items-center">
+                    <a href="/shop" className="block hover:text-gray-700">
+                      Shop
+                    </a>
+                    <MdKeyboardArrowRight className="text-black" />
+                  </li>
+                </Link>
                 <li>
                   <a href="/contact" className="block hover:text-gray-700">
                     Contact
